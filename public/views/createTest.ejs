@@ -1,0 +1,14 @@
+<%- include('head.ejs') %>
+
+  <form action="/create" method="POST">
+    <div>
+        <label for="name">Description:</label>
+        <input type="text" name="name" id="name"> 
+    </div>
+    <div>
+        <label for="url">ELK App URL:</label>
+        <input type="text" name="url" id="url"> 
+    </div>
+  </form>
+
+<%- include('end.ejs') %>

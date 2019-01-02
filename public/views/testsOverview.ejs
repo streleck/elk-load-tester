@@ -1,0 +1,35 @@
+<%- include('head.ejs') %>
+
+<h1>Tests Overview</h1>
+
+<% if(test.length === 0){
+
+<h3>There are no tests to display</h3>
+
+<% } else { %>
+
+  <table>
+  <thead>
+    <th>Description</th>
+    <th>Started</th>
+    <th>Finished</th>
+    <th>Total Tests</th>
+    <th>Total Fails</th>
+  </thead>
+  <tbody>
+  <% tests.forEach((test) => { %>
+    <tr id="<%= test.id %>">
+      <td>test.description</td>
+      <td>test.started</td>
+      <td>test.finished</td>
+      <td>test.total</td>
+      <td>test.fails</td>
+    </tr>
+  <% }) %>
+  </tbody>
+</table>
+
+<% } %>
+
+<a href="/create">Start new test</a>
+<%- include('end.ejs') %>
