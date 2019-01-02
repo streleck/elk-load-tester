@@ -2,7 +2,7 @@
 
 <h1>Tests Overview</h1>
 
-<% if(test.length === 0){
+<% if(tests.length === 0){ %>
 
 <h3>There are no tests to display</h3>
 
@@ -19,11 +19,11 @@
   <tbody>
   <% tests.forEach((test) => { %>
     <tr id="<%= test.id %>">
-      <td>test.description</td>
-      <td>test.started</td>
-      <td>test.finished</td>
-      <td>test.total</td>
-      <td>test.fails</td>
+      <td><%= test.description %></td>
+      <td><%= test.started %></td>
+      <td><%= test.finished %></td>
+      <td><%= test.total %></td>
+      <td><%= test.fails %></td>
     </tr>
   <% }) %>
   </tbody>

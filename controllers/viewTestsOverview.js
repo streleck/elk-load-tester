@@ -23,7 +23,7 @@ module.exports = function(req, res, next){
           id: doc._id,
           description: doc.description,
           started: moment(doc.startedAt).format('llll'),
-          finished: moment(doc.finishededAt).format('llll'),
+          finished: moment(doc.finishedAt).format('llll'),
           total: doc.queries.length,
           fails: errorCount
         }

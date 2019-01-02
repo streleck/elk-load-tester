@@ -1,0 +1,23 @@
+<%- include('head.ejs') %>
+
+<h1>Tests Overview</h1>
+
+<h3>Time Elapsed: <%= timeElapsed %></h3>
+
+<table>
+  <thead>
+    <th>Result</th>
+    <th>Occurrances</th>
+  </thead>
+  <tbody>
+  <% Object.keys(resultCount).forEach((result) => { %>
+    <tr>
+      <td><%= result %></td>
+      <td><%= resultCount[result] %></td>
+    </tr>
+  <% }) %>
+  </tbody>
+</table>
+
+<a href="/create">Start new test</a>
+<%- include('end.ejs') %>

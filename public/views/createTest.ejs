@@ -3,12 +3,17 @@
   <form action="/create" method="POST">
     <div>
         <label for="name">Description:</label>
-        <input type="text" name="name" id="name"> 
+        <input type="text" name="description" id="description"> 
     </div>
     <div>
         <label for="url">ELK App URL:</label>
         <input type="text" name="url" id="url"> 
     </div>
+    <div>
+      <label for="url">Total Queries:</label>
+      <input type="number" name="totalQueries" id="totalQueries"> 
+    </div>
+    <button class="btn" type="submit">Start test</button>
   </form>
 
 <%- include('end.ejs') %>

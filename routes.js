@@ -7,22 +7,15 @@ const router = express.Router();
 
 const viewTestsOverview = require('./controllers/viewTestsOverview');
 const viewTestDetails = require('./controllers/viewTestDetails');
+const viewCreateTest = require('./controllers/viewCreateTest');
+
+const createTest = require('./controllers/createTest');
 
 router.get('/', viewTestsOverview);
+router.get('/create', viewCreateTest);
 router.get('/:id', viewTestDetails);
 
-router.get('/create', function(req, res, next){
-  res.render('createTest', {
-    pageTitle: 'Start New Test',
-    pageName: 'createTest',
-    testData: doc
-  })
-});
-
-router.post('/create', function(req, res, next){
-  makeTestCalls();
-  res.redirect('/');
-})
+router.post('/create', createTest);
 
 
 module.exports = router;

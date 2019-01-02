@@ -41,7 +41,6 @@ module.exports = function(url, description, totalQueries){
     });
     queries++;
     if(queries === totalQueries){
-      console.log(queryResults);
       var newTestRecord = new TestRecord({
         description: description,
         url: url,

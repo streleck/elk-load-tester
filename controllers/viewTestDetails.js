@@ -10,21 +10,28 @@ module.exports = function(req, res, next){
       });
     }
     else{
-      let uniqueErrors = [];
-      let allErrors = [];
+      let resultCount = {
+        success: 0
+      }
       for(let query of doc.queries){
         if(query.error){
-          allErrors.push(query.error);
-          if(uniqueErrors.indexOf(query.error) === -1){
-            uniqueErrors.push(query.error);
+          let resultTypes = Object.keys(resultCount);
+          if(resultTypes.indexOf(query.error) === -1){
+            resultCount[query.error] = 1;
           }
+          else {
+            resultCount[query.error]++;
+          }
+        }
+        else {
+          resultCount.success++;
         }
       }
       res.render('testDetails', {
         pageTitle: 'Load Test Details',
         pageName: 'testDetails',
-        uniqueErrors: uniqueErrors,
-        allErrors: allErrors
+        timeElapsed: doc.finishedAt - doc.startedAt,
+        resultCount: resultCount
       })
     }
   });
