@@ -23,7 +23,7 @@ module.exports = function(url, description, totalQueries){
       data: {
         "query": {
           "match": {
-            "description": searchTerms[4]
+            "description": searchTerms[Math.floor(searchTermsLength * Math.random())]
           }
         }
       },
@@ -51,9 +51,6 @@ module.exports = function(url, description, totalQueries){
       newTestRecord.save(function(err, doc) {
         if(err){
           console.log('ERROR WRITING TO DATABASE!!! \n', err);
-        }
-        else{
-          console.log(doc);
         }
       });
     }
