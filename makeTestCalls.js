@@ -19,7 +19,7 @@ module.exports = function(recordDatabaseId, url, totalQueries){
   interval(async () => {
     await axios({
       method:'post',
-      url: url + '/product' + '1' + '/_search',
+      url: url + '/product/_search',
       data: {
         "query": {
           "match": {
