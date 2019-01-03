@@ -15,16 +15,25 @@
     <th>Finished</th>
     <th>Total Tests</th>
     <th>Total Fails</th>
+    <th>Avg. Time (ms)</th>
   </thead>
   <tbody>
   <% tests.forEach((test) => { %>
+    <% if(test.total === 0){ %>
+    <tr>
+      <td><%= test.description %></td>
+      <td><strong>Testing in progress</strong></td>
+    </tr>
+    <% } else { %>
     <tr id="<%= test.id %>">
       <td><%= test.description %></td>
       <td><%= test.started %></td>
       <td><%= test.finished %></td>
       <td><%= test.total %></td>
       <td><%= test.fails %></td>
+      <td><%= test.averageTime %></td>
     </tr>
+    <% } %>
   <% }) %>
   </tbody>
 </table>

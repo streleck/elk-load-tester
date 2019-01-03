@@ -10,12 +10,14 @@
         <input type="text" name="url" id="url"> 
     </div>
     <div>
-      <label for="url">Total Queries:</label>
+      <label for="url"># of Queries:</label>
       <input type="number" name="totalQueries" id="totalQueries"> 
     </div>
-    <button class="btn" type="submit">Start test</button>
+    <div>
+      <label for="url">Concurrent tests:</label>
+      <input type="number" name="concurrentTests" id="concurrent-tests" value="1"> 
+    </div>
+    <button class="btn" type="button" id="submit-button">Start test</button>
   </form>
-
-  <button type="button" id="press-button">Other button</button>
 
 <%- include('end.ejs') %>

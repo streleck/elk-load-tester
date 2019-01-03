@@ -1,4 +1,4 @@
-module.exports = function(url, description, totalQueries){
+module.exports = function(recordDatabaseId, url, totalQueries){
   const axios = require('axios');
   const https = require('https');
   var TestRecord = require('./models/TestRecord');
@@ -31,28 +31,27 @@ module.exports = function(url, description, totalQueries){
       httpsAgent: agent 
     })
     .then(function(response) {
-      console.log('good');
       queryResults.push({wasSuccessful: true, error: ''});
     })
     .catch(function(error) {
-      console.log('bad');
-      queryResults.push({wasSuccessful: true, error: error});
+      queryResults.push({wasSuccessful: false, error: error});
       
     });
     queries++;
     if(queries === totalQueries){
-      var newTestRecord = new TestRecord({
-        description: description,
-        url: url,
-        startedAt: startedAt,
-        finishedAt: Date.now(),
-        queries: queryResults
-      });
-      newTestRecord.save(function(err, doc) {
-        if(err){
-          console.log('ERROR WRITING TO DATABASE!!! \n', err);
+      TestRecord.findOneAndUpdate(
+        {_id: recordDatabaseId},
+        {
+          startedAt: startedAt,
+          finishedAt: Date.now(),
+          queries: queryResults
+        },
+        function(err, doc){
+          if(err){
+            console.log(err);
+          }
         }
-      });
+      )
     }
   }, 1, {iterations: totalQueries})
 }

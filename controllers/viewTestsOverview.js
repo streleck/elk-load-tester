@@ -25,7 +25,8 @@ module.exports = function(req, res, next){
           started: moment(doc.startedAt).format('llll'),
           finished: moment(doc.finishedAt).format('llll'),
           total: doc.queries.length,
-          fails: errorCount
+          fails: errorCount,
+          averageTime: ((doc.finishedAt - doc.startedAt) / doc.queries.length).toFixed(0)
         }
         tests.push(newTest);
       }
