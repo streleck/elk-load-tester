@@ -8,7 +8,7 @@ module.exports = function(req, res, next){
   });
   newTestRecord.save(function(err, doc) {
     if(err){
-      console.log('ERROR WRITING TO DATABASE!!! \n', err);
+      console.log('ERROR WRITING TO DATABASE!!! \n Error when initially creating test record.', err);
       res.render('errorPage', {
         pageTitle: 'Database Error',
         pageName: 'errorPage',
@@ -16,7 +16,7 @@ module.exports = function(req, res, next){
       });
     }
     else{
-      makeTestCalls(doc._id, req.body.url, parseInt(req.body.totalQueries));
+      makeTestCalls(doc._id, req.body.url, req.body.description, parseInt(req.body.totalQueries));
       res.status(200).send('hi');
     }
   });

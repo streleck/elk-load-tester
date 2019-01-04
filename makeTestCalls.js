@@ -1,4 +1,4 @@
-module.exports = function(recordDatabaseId, url, totalQueries){
+module.exports = function(recordDatabaseId, url, description, totalQueries){
   const axios = require('axios');
   const https = require('https');
   var TestRecord = require('./models/TestRecord');
@@ -15,6 +15,8 @@ module.exports = function(recordDatabaseId, url, totalQueries){
   
   let queries = 0;
   let queryResults = [];
+
+  console.log('begin testing: ' + description);
 
   interval(async () => {
     await axios({
