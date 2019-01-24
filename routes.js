@@ -13,7 +13,7 @@ const createTest = require('./controllers/createTest');
 
 router.get('/', viewTestsOverview);
 router.get('/create', viewCreateTest);
-router.get('/:id', viewTestDetails);
+router.get('/details/:id', viewTestDetails);
 
 router.post('/create', createTest);
 
